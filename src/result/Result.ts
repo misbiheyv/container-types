@@ -112,11 +112,11 @@ export class Result<T>
         }
     }
 
-    then<R>(cb: (err: T | Error) => Data<R>): Result<R> {
+    then<R>(cb: (v: T | Error) => Data<R>): Result<R> {
         try {
             return new Result<R>(() => cb(this.data))
-        } catch (err: any) {
-            return new Failure(err);
+        } catch (v: any) {
+            return new Failure(v);
         }
     }
 
